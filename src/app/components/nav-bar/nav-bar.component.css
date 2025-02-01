@@ -1,0 +1,28 @@
+.navbar {
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-solid {
+  background-color: black !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-link {
+  color: white !important;
+  cursor: pointer;
+}
+
+.navbar-solid .nav-link {
+  color: whitesmoke !important;
+}
+
+.active-link {
+  color: #A31D1D !important;
+  font-weight: bold;
+  border-bottom: 2px solid #A31D1D;
+}
+
+.navbar-solid .navbar-toggler-icon {
+  filter: invert(1);
+}

@@ -1,0 +1,39 @@
+
+<section class="m-5 p-5 mx-auto bg-backgorund w-100" id="project">
+  <div class="text-center">
+    <h2 class="text-uppercase mb-3 color-text fs-1 fw-bolder">My Projects</h2>
+  </div>
+  <div class="d-flex align-items-center justify-content-center mb-3">
+    <div class="line me-3 bg-line"></div>
+    <i class="fa-solid color-text fa-star"></i>
+    <div class="line ms-3 bg-line"></div>
+  </div>
+  <div class="container">
+    <div class="row g-5">
+    @for ( project of projects;track $index) {
+      <div class="col-lg-4 col-md-6" (click)="displayData(project.image, project.title, project.description)">
+        <div class="overflow-hidden position-relative rounded-3">
+          <img [src]="project.image" class="w-100 rounded-3" [alt]="project.title" />
+          <div class="layer position-absolute start-0 w-100 top-0 h-100 d-flex justify-content-center align-items-center">
+            <i class="text-white fa-solid fa-plus fa-6x"></i>
+          </div>
+        </div>
+      </div>
+    }
+
+    </div>
+  </div>
+
+@if(showModal){
+  <div id="modal" class="modal"  (click)="closeModal()">
+    <div class="modal-content">
+      <img [src]="selectedImage" alt="Project Image" />
+      <div class="modal-text">
+        <h3>{{ selectedTitle }}</h3>
+        <p>{{ selectedDescription }}</p>
+      </div>
+    </div>
+  </div>
+}
+
+</section>

@@ -1,0 +1,76 @@
+<section class="where-ive-worked" id="education">
+  <div class="container">
+    <h2 class="section-title">Where I’ve Studied</h2>
+    <div class="work-content">
+      <div class="work-sidebar">
+        <button class="tab-button active" (click)="showContent('university')">
+          Ain Shams University
+        </button>
+        <button class="tab-button inactive" (click)="showContent('depi')">
+          DEPI Full Stack .NET
+        </button>
+      </div>
+      <div class="work-details">
+        @if (activeTab === 'university') {
+        <div class="education-details-container">
+          <div class="education-text">
+            <h3>
+              Bachelor of Pure Mathematics & Computer Science &amp;
+              <span class="company-name">Ain Shams University</span>
+            </h3>
+            <p class="work-duration">2022 – 2026</p>
+            <ul class="responsibilities">
+              <li>Object-Oriented Programming</li>
+              <li>Data Structures &amp; Algorithms</li>
+              <li>Database Management Systems</li>
+              <li>Calculus</li>
+              <li>Number Theory</li>
+              <li>Numerical Analysis</li>
+              <li>Topology</li>
+            </ul>
+          </div>
+          <div class="education-image">
+            <img src="./assets/download.png" alt="Ain Shams University logo" />
+          </div>
+        </div>
+        } @else if (activeTab !=='university'){
+          <div class="education-details-container">
+            <div class="education-text">
+              <h3>
+                Full Stack .NET Web Developer &amp;<span class="company-name"
+                  >DEPI</span
+                >
+              </h3>
+              <p class="work-duration">2025 – Present</p>
+              <ul class="responsibilities">
+                <li>Strong foundation in C# for robust back-end development</li>
+                <li>
+                  Proficient in HTML5, JavaScript, and CSS3 for front-end
+                  development
+                </li>
+                <li>
+                  Experience with .NET Core Web API for building scalable web
+                  services
+                </li>
+                <li>
+                  Skilled in MVC frameworks for modern web application development
+                </li>
+                <li>
+                  Capable of creating data-driven applications with full-stack
+                  capabilities
+                </li>
+              </ul>
+            </div>
+            <div class="education-image">
+              <img src="./assets/images.png" alt="DEPI Logo" />
+              <!-- Replace with DEPI logo -->
+            </div>
+          </div>
+        }
+
+
+
+      </div>
+    </div>
+  </div>
+</section>

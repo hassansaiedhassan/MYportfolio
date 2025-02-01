@@ -1,0 +1,77 @@
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #0000006f, #00000094),
+    url('/assets/programming-background-collage.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+position: relative;
+}
+
+.caption span {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.caption h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.caption p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.layer {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.social ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.social li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.social a {
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social a:hover {
+  transform: scale(1.2);
+  color: #00aced;
+}
+
+.bg-icons {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.3s ease-in-out;
+}
+
+.bg-icons:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.fontcss{
+
+  font-size: 24px !important;
+  font-weight: bold !important;
+}
