@@ -12,17 +12,20 @@ import { filter } from 'rxjs/operators';
 })
 export class NavBarComponent {
   activeSection: string = 'home';
+  // نستخدم signal لتتبع ما إذا كان قد تم التمرير بعد قسم home
   isScrolledPastHome = signal(false);
 
   constructor(
     private viewportScroller: ViewportScroller,
     private router: Router
   ) {
-    // تحديث حالة التمرير عند تغيير المسار
+    // إذا كنت ترغب بتغيير الخلفية بناءً على التغييرات في الروت، يمكنك استخدام هذا الاشتراك.
+    // إذا لم تكن بحاجة لذلك، يمكنك إزالة هذا الاشتراك.
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        if (event.url === '/project') {
+        // مثال: إذا تغير الرابط إلى "/about" نجعل الخلفية ثابتة
+        if (event.url === '/about') {
           this.isScrolledPastHome.set(true);
         } else {
           this.isScrolledPastHome.set(false);
@@ -30,18 +33,16 @@ export class NavBarComponent {
       });
   }
 
-  // استماع لحدث التمرير
   @HostListener('window:scroll')
   onWindowScroll() {
-    if (this.router.url !== '/project') {
-      const homeSection = document.getElementById('home');
-      if (homeSection) {
-        this.isScrolledPastHome.set(window.scrollY > homeSection.clientHeight);
-      }
+    // تحديث isScrolledPastHome بناءً على موقع التمرير مقارنة بارتفاع قسم "home"
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+      this.isScrolledPastHome.set(window.scrollY > homeSection.clientHeight);
     }
 
     // تحديد القسم النشط بناءً على التمرير
-    const sections = ['home', 'about', 'education', 'contact'];
+    const sections = ['home', 'about', 'education', 'project', 'contact'];
     for (const section of sections) {
       const element = document.getElementById(section);
       if (element && this.isElementInViewport(element)) {
@@ -51,29 +52,16 @@ export class NavBarComponent {
     }
   }
 
-  // التحقق مما إذا كان العنصر في منتصف الشاشة
   private isElementInViewport(el: HTMLElement): boolean {
     const rect = el.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
     return rect.top < windowHeight / 2 && rect.bottom > windowHeight / 2;
   }
 
-  // التمرير إلى قسم معين
   scrollToSection(sectionId: string) {
-    if (sectionId === 'project') {
-      if (this.router.url !== '/project') {
-        this.router.navigate(['/project']);
-      }
-    } else {
-      if (this.router.url === '/project') {
-        this.router.navigate(['/']).then(() => {
-          setTimeout(() => {
-            this.viewportScroller.scrollToAnchor(sectionId);
-          }, 100);
-        });
-      } else {
-        this.viewportScroller.scrollToAnchor(sectionId);
-      }
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }
