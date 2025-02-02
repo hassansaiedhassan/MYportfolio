@@ -1,7 +1,8 @@
 .about {
   background: #FEF9E1;
-  padding-block: 4rem;
-
+  padding: 20px;
+  text-align: center;
+  overflow: hidden; /* يمنع أي توسع خارج الحدود */
 }
 
 .about-title {
@@ -17,6 +18,7 @@
   font-size: 18px;
   line-height: 1.8;
   text-align: justify;
+  max-width: 100%;
 }
 
 .about-image {
@@ -25,8 +27,31 @@
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  display: block;
+  object-fit: cover;
+  overflow: hidden;
+}
+.about-image:hover {
 }
 
-.about-image:hover {
-  transform: scale(1.05);
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 15px;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .about-description {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }

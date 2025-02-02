@@ -1,5 +1,9 @@
 #project{
   background-color: #6D2323;
+
+}
+.project{
+  padding:6rem !important;
 }
 .line {
   height: 4px;
@@ -42,7 +46,7 @@ img {
   height: 200px !important;
 }
 
-/* نافذة العرض المنبثقة */
+
 .modal {
   display: flex;
   position: fixed;
