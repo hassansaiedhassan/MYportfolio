@@ -2,7 +2,7 @@
   background: #FEF9E1;
   padding: 20px;
   text-align: center;
-  overflow: hidden; /* يمنع أي توسع خارج الحدود */
+  overflow: hidden; 
 }
 
 .about-title {

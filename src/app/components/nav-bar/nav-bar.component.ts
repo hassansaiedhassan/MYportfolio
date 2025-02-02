@@ -12,19 +12,16 @@ import { filter } from 'rxjs/operators';
 })
 export class NavBarComponent {
   activeSection: string = 'home';
-  // نستخدم signal لتتبع ما إذا كان قد تم التمرير بعد قسم home
   isScrolledPastHome = signal(false);
 
   constructor(
     private viewportScroller: ViewportScroller,
     private router: Router
   ) {
-    // إذا كنت ترغب بتغيير الخلفية بناءً على التغييرات في الروت، يمكنك استخدام هذا الاشتراك.
-    // إذا لم تكن بحاجة لذلك، يمكنك إزالة هذا الاشتراك.
+
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // مثال: إذا تغير الرابط إلى "/about" نجعل الخلفية ثابتة
         if (event.url === '/about') {
           this.isScrolledPastHome.set(true);
         } else {
@@ -35,13 +32,12 @@ export class NavBarComponent {
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    // تحديث isScrolledPastHome بناءً على موقع التمرير مقارنة بارتفاع قسم "home"
+
     const homeSection = document.getElementById('home');
     if (homeSection) {
       this.isScrolledPastHome.set(window.scrollY > homeSection.clientHeight);
     }
 
-    // تحديد القسم النشط بناءً على التمرير
     const sections = ['home', 'about', 'education', 'project', 'contact'];
     for (const section of sections) {
       const element = document.getElementById(section);
